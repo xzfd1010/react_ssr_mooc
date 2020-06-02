@@ -8,7 +8,7 @@ const port = 3000
 const content = renderToString(<Home/>)
 
 app.get('/', (req, res) => {
-  res.send(`
+  res.send(` 
     <html lang="en">
     <head>
     <title>ssr</title>

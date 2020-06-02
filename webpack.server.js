@@ -8,6 +8,7 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
+  watch: true,
   externals: [nodeExternals()],
   mode: "development",
   module: {
