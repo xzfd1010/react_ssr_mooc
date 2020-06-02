@@ -1,20 +1,23 @@
-const express = require('express')
-const app = express()
-const Home = require('./containers/Home')
-const port = 3000
+import express from 'express'
+import Home from './containers/Home'
+import {renderToString} from 'react-dom/server'
+import React from "react";
 
-app.get('/', (req, res) => res.send(`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>first lesson</h1>
-    <p>hello world</p>
-</body>
-</html>
-`))
+const app = express()
+const port = 3000
+const content = renderToString(<Home/>)
+
+app.get('/', (req, res) => {
+  res.send(`
+    <html lang="en">
+    <head>
+    <title>ssr</title>
+    <body>
+        ${content}
+    </body>
+    </head>
+    </html>
+  `)
+})
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

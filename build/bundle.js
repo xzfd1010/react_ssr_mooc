@@ -90,10 +90,11 @@
 /*!*********************************************!*\
   !*** ./server/src/containers/Home/index.js ***!
   \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// node 结构下不支持import 语法\nvar React = __webpack_require__(/*! react */ \"react\"); // JSX语法也不能直接在服务端运行，需要打包\n\n\nvar Home = function Home() {\n  return /*#__PURE__*/React.createElement(\"div\", null, \"home\");\n};\n\nmodule.exports = {\n  default: Home\n};\n\n//# sourceURL=webpack:///./server/src/containers/Home/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n// node 结构下不支持import 语法\n // JSX语法也不能直接在服务端运行，需要打包\n\nvar Home = function Home() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, \"welcome to home\");\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Home);\n\n//# sourceURL=webpack:///./server/src/containers/Home/index.js?");
 
 /***/ }),
 
@@ -101,10 +102,11 @@ eval("// node 结构下不支持import 语法\nvar React = __webpack_require__(/
 /*!*****************************!*\
   !*** ./server/src/index.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var express = __webpack_require__(/*! express */ \"express\");\n\nvar app = express();\n\nvar Home = __webpack_require__(/*! ./containers/Home */ \"./server/src/containers/Home/index.js\");\n\nvar port = 3000;\napp.get('/', function (req, res) {\n  return res.send(\"\\n<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n    <meta charset=\\\"UTF-8\\\">\\n    <title>Title</title>\\n</head>\\n<body>\\n    <h1>first lesson</h1>\\n    <p>hello world</p>\\n</body>\\n</html>\\n\");\n});\napp.listen(port, function () {\n  return console.log(\"Example app listening at http://localhost:\".concat(port));\n});\n\n//# sourceURL=webpack:///./server/src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _containers_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./containers/Home */ \"./server/src/containers/Home/index.js\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n/* harmony import */ var react_dom_server__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom_server__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\nvar port = 3000;\nvar content = Object(react_dom_server__WEBPACK_IMPORTED_MODULE_2__[\"renderToString\"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_containers_Home__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\napp.get('/', function (req, res) {\n  res.send(\"\\n    <html>\\n    <head>\\n    <title>ssr</title>\\n    <body>\\n        \".concat(content, \"\\n    </body>\\n    </head>\\n    </html>\\n    \"));\n});\napp.listen(port, function () {\n  return console.log(\"Example app listening at http://localhost:\".concat(port));\n});\n\n//# sourceURL=webpack:///./server/src/index.js?");
 
 /***/ }),
 
@@ -127,6 +129,17 @@ eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///externa
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
 
 /***/ })
 
