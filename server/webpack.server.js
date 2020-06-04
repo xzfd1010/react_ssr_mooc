@@ -3,7 +3,7 @@ const nodeExternals = require('webpack-node-externals')
 console.log(path.resolve(__dirname, "node_modules"));
 module.exports = {
   target: "node",
-  entry: "./server/src/index.js",
+  entry: "./src/index.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
