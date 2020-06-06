@@ -1,16 +1,17 @@
 // node 结构下不支持import 语法
 
 import React from "react";
-import Header from "../../components/Header";
+import {Link} from "react-router-dom";
 
 // JSX语法也不能直接在服务端运行，需要打包
-const Login = () => {
+const Header = () => {
   return (
     <div>
-      <Header />
-      <div>Login</div>
+      <Link to='/'>Home</Link>
+      <br/>
+      <Link to='/login'>Login</Link>
     </div>
   )
 }
 
-export default Login
+export default Header
