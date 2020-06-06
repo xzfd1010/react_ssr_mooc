@@ -1,5 +1,5 @@
 import express from 'express'
-import Home from './containers/Home'
+import Home from '../containers/Home'
 import {renderToString} from 'react-dom/server'
 import React from "react";
 
