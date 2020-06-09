@@ -2,13 +2,14 @@
 
 import React from "react";
 import Header from "../../components/Header";
+import {connect} from 'react-redux'
 
 // JSX语法也不能直接在服务端运行，需要打包
-const Home = () => {
+const Home = (props) => {
   return (
     <div>
       <Header/>
-      <div>Hello Nick!</div>
+      <div>Hello {props.name}!</div>
       <button onClick={() => {
         alert('click')
       }}>click
@@ -17,4 +18,8 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = state => ({
+  name: state.name
+})
+
+export default connect(mapStateToProps,null)(Home)
