@@ -1,6 +1,9 @@
 import express from 'express'
 import React from "react";
 import {render} from './utils'
+import {getStore} from "../store";
+import {matchRoutes} from "react-router-config";
+import routes from "../Routes";
 
 
 const app = express()
@@ -10,7 +13,24 @@ app.use(express.static('public'))
 const port = 3000
 
 app.get('*', (req, res) => {
-  res.send(render(req))
+  const store = getStore()
+
+  // 即针对不同路径，向store中添加数据
+  const matchedRoutes = matchRoutes(routes, req.path);
+  // 执行matchRoutes里的loadData方法
+  const promises = []
+
+  matchedRoutes.forEach(item => {
+    if (item.route.loadData) {
+      // 将返回的promise放到数组中
+      promises.push(item.route.loadData(store))
+    }
+  })
+
+  Promise.all(promises).then(() => {
+    res.send(render(req, store, routes))
+  })
+
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

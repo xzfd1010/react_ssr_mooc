@@ -10,6 +10,11 @@ const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk))
 }
 
-// 单例store！这样写所有用户用的是同样的数据
+const getClientStore = () => {
+  // 获取服务端的state
+  const defaultState = window.context.state;
+  // 参数 preloadState
+  return createStore(reducer, defaultState, applyMiddleware(thunk))
+}
 
-export default getStore
+export {getStore, getClientStore}
