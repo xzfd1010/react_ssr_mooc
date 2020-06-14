@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './containers/Home'
 import Translation from "./containers/Translation";
 import App from "./App";
+import NotFound from "./containers/NotFound";
 
 export default [
   {
@@ -24,7 +25,9 @@ export default [
         exact: true,
         key: 'login'
       },
-
+      {
+        component: NotFound
+      }
     ]
   }]
 
