@@ -1,13 +1,15 @@
 import {createStore, applyMiddleware, combineReducers} from "redux";
 import thunk from 'redux-thunk'
-import {reducer as homeReducer} from '../containers/Home/store/'
 import {reducer as headerReducer} from '../components/Header/store/'
-import clientAxios from '../client/request'
+import {reducer as homeReducer} from '../containers/Home/store/'
+import {reducer as translationReducer} from '../containers/Translation/store'
 import createInstance from '../server/request'
+import clientAxios from '../client/request'
 
 const reducer = combineReducers({
+  header: headerReducer,
   home: homeReducer,
-  header: headerReducer
+  translation: translationReducer
 })
 
 const getStore = (req) => {
