@@ -1,14 +1,19 @@
 import React from "react";
-import Header from "./components/Header";
+import Index from "./components/Header/";
 import {renderRoutes} from "react-router-config";
+import {actions} from './components/Header/store'
 
-const Login = (props) => {
+const App = (props) => {
   return (
     <div>
-      <Header/>
+      <Index/>
       {renderRoutes(props.route.routes)}
     </div>
   )
 }
 
-export default Login
+App.loadData = (store) => {
+  return store.dispatch(actions.getHeaderInfo())
+}
+
+export default App
