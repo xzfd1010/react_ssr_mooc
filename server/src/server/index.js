@@ -15,14 +15,13 @@ const port = 3000
 
 app.use('/api', proxy('http://47.95.113.63', {
   proxyReqPathResolver: function (req) {
-    console.log('url',req.url)
     // req.url 就是 news.json?secret=PP87ANTIPIRATE 这段内容
     return '/ssr/api' + req.url
   }
 }));
 
 app.get('*', (req, res) => {
-  const store = getStore()
+  const store = getStore(req)
 
   // 即针对不同路径，向store中添加数据
   const matchedRoutes = matchRoutes(routes, req.path);

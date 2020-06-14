@@ -1,12 +1,12 @@
 import React from "react";
-import Index from "./components/Header/";
+import Header from "./components/Header/";
 import {renderRoutes} from "react-router-config";
 import {actions} from './components/Header/store'
 
 const App = (props) => {
   return (
     <div>
-      <Index/>
+      <Header/>
       {renderRoutes(props.route.routes)}
     </div>
   )
