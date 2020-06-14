@@ -5,20 +5,8 @@ const changeLogin = (value) => ({
   value
 })
 
-export const getHeaderInfo = () => {
-  const url = '/api/isLogin.json?secret=PP87ANTIPIRATE'
-
-  return (dispatch, getState, axiosInstance) => {
-    //http://47.95.113.63/
-    return axiosInstance.get(url)
-      .then(({data}) => {
-        dispatch(changeLogin(data.data.login))
-      })
-  }
-}
-
 export const login = () => {
-  const url = '/api/login.json?secret=PP87ANTIPIRATE'
+  const url = '/api/login.json'
 
   return (dispatch, getState, axiosInstance) => {
     //http://47.95.113.63/
@@ -29,15 +17,26 @@ export const login = () => {
   }
 }
 
-
 export const logout = () => {
-  const url = '/api/logout.json?secret=PP87ANTIPIRATE'
+  const url = '/api/logout.json'
 
   return (dispatch, getState, axiosInstance) => {
     //http://47.95.113.63/
     return axiosInstance.get(url)
       .then(({data}) => {
         dispatch(changeLogin(false))
+      })
+  }
+}
+
+export const getHeaderInfo = () => {
+  const url = '/api/isLogin.json'
+
+  return (dispatch, getState, axiosInstance) => {
+    //http://47.95.113.63/
+    return axiosInstance.get(url)
+      .then(({data}) => {
+        dispatch(changeLogin(data.data.login))
       })
   }
 }

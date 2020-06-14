@@ -6,7 +6,7 @@ const changeList = (value) => ({
 })
 
 export const getTranslationList = () => {
-  const url = '/api/translations.json?secret=PP87ANTIPIRATE'
+  const url = '/api/translations.json'
 
   return (dispatch, getState, axiosInstance) => {
     //http://47.95.113.63/

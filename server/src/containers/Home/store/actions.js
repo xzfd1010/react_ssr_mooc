@@ -7,7 +7,7 @@ const changeList = (list) => ({
 })
 
 export const getHomeList = () => {
-  const url = '/api/news.json?secret=PP87ANTIPIRATE'
+  const url = '/api/newslist.json'
 
   return (dispatch, getState, axiosInstance) => {
     //http://47.95.113.63/

@@ -31,11 +31,18 @@ app.get('*', (req, res) => {
   matchedRoutes.forEach(item => {
     if (item.route.loadData) {
       // 将返回的promise放到数组中
-      promises.push(item.route.loadData(store))
+      const promise = new Promise((resolve, reject) => {
+        item.route.loadData(store).then((value) => {
+          resolve(value)
+        }).catch((e) => {
+          resolve(e)
+        })
+      })
+      promises.push(promise)
     }
   })
 
-  Promise.all(promises).then(() => {
+  Promise.all(promises).then((values) => {
     const context = {}
     const html = render(req, store, routes, context)
     if (context.NOT_FOUND) {
@@ -43,11 +50,10 @@ app.get('*', (req, res) => {
       res.send(html)
     } else if (context.action === 'REPLACE') {
       res.redirect(301, context.url)
-    }else{
+    } else {
       res.send(html)
     }
   })
-
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
