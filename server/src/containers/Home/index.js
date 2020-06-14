@@ -49,7 +49,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getHomeList() {
-    console.log('get')
     dispatch(getHomeList())
   }
 })

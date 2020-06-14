@@ -4,6 +4,7 @@ import {render} from './utils'
 import {getStore} from "../store";
 import {matchRoutes} from "react-router-config";
 import routes from "../Routes";
+import proxy from 'express-http-proxy'
 
 
 const app = express()
@@ -11,6 +12,14 @@ const app = express()
 app.use(express.static('public'))
 
 const port = 3000
+
+app.use('/api', proxy('http://47.95.113.63', {
+  proxyReqPathResolver: function (req) {
+    console.log('url',req.url)
+    // req.url 就是 news.json?secret=PP87ANTIPIRATE 这段内容
+    return '/ssr/api' + req.url
+  }
+}));
 
 app.get('*', (req, res) => {
   const store = getStore()
