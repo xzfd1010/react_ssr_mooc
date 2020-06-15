@@ -4,13 +4,20 @@ import React, {Fragment, Component} from "react";
 import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
 import {actions} from './store'
+import styles from './style.css'
 
 // JSX语法也不能直接在服务端运行，需要打包
 class Header extends Component {
+  UNSAFE_componentWillMount() {
+    if (styles._getCss) {
+      this.props.staticContext.css.push(styles._getCss())
+    }
+  }
+
   render() {
-    const {login, handleLogin,handleLogout} = this.props
+    const {login, handleLogin, handleLogout} = this.props
     return (
-      <div>
+      <div className={styles.test}>
         <Link to='/'>首页</Link>
         <br/>
         {
@@ -34,7 +41,7 @@ const mapDispatch = (dispatch) => ({
   handleLogin() {
     dispatch(actions.login())
   },
-  handleLogout(){
+  handleLogout() {
     dispatch(actions.logout())
   }
 })

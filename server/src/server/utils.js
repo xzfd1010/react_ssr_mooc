@@ -15,10 +15,13 @@ export const render = (req, store, routes, context) => {
     </Provider>
   ))
 
+  const cssStr = context.css.length ? context.css.join('\n') : ''
+
   return ` 
       <html lang="en">
       <head>
       <title>ssr</title>
+      <style>${cssStr}</style>
       <body>
           <div id="root">${content}</div>
           <script >

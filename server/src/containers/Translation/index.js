@@ -31,12 +31,6 @@ class Translation extends Component {
   }
 }
 
-Translation.loadData = (store) => {
-  // 这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  // 这里返回的是一个promise
-  return store.dispatch(getTranslationList())
-}
-
 
 const mapStateToProps = state => ({
   list: state.translation.list,
@@ -49,4 +43,12 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translation)
+const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(Translation)
+
+ExportTranslation.loadData = (store) => {
+  // 这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  // 这里返回的是一个promise
+  return store.dispatch(getTranslationList())
+}
+
+export default ExportTranslation

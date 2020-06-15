@@ -7,7 +7,7 @@ const changeList = (list) => ({
 })
 
 export const getHomeList = () => {
-  const url = '/api/newslist.json'
+  const url = '/api/news.json'
 
   return (dispatch, getState, axiosInstance) => {
     //http://47.95.113.63/

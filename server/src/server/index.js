@@ -43,7 +43,9 @@ app.get('*', (req, res) => {
   })
 
   Promise.all(promises).then((values) => {
-    const context = {}
+    const context = {
+      css: []
+    }
     const html = render(req, store, routes, context)
     if (context.NOT_FOUND) {
       res.status(404)

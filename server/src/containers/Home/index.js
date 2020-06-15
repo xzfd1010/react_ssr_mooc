@@ -3,10 +3,17 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux'
 import {getHomeList} from "./store/actions";
+import styles from './style.css'
 
 // JSX语法也不能直接在服务端运行，需要打包
 
 class Home extends Component {
+  UNSAFE_componentWillMount() {
+    if (styles._getCss) {
+      this.props.staticContext.css.push(styles._getCss())
+    }
+  }
+
   componentDidMount() {
     if (!this.props.list.length) {
       this.props.getHomeList()
@@ -22,7 +29,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.test}>
         {this.getList()}
         <button onClick={() => {
           alert('click')
@@ -31,12 +38,6 @@ class Home extends Component {
       </div>
     )
   }
-}
-
-Home.loadData = (store) => {
-  // 这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
-  // 这里返回的是一个promise
-  return store.dispatch(getHomeList())
 }
 
 
@@ -51,4 +52,12 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(Home)
+
+ExportHome.loadData = (store) => {
+  // 这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  // 这里返回的是一个promise
+  return store.dispatch(getHomeList())
+}
+
+export default ExportHome
