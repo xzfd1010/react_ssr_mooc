@@ -5,14 +5,10 @@ import {Link} from "react-router-dom";
 import {connect} from 'react-redux'
 import {actions} from './store'
 import styles from './style.css'
+import withStyle from "../../withStyle";
 
 // JSX语法也不能直接在服务端运行，需要打包
 class Header extends Component {
-  UNSAFE_componentWillMount() {
-    if (styles._getCss) {
-      this.props.staticContext.css.push(styles._getCss())
-    }
-  }
 
   render() {
     const {login, handleLogin, handleLogout} = this.props
@@ -45,4 +41,4 @@ const mapDispatch = (dispatch) => ({
     dispatch(actions.logout())
   }
 })
-export default connect(mapState, mapDispatch)(Header)
+export default connect(mapState, mapDispatch)(withStyle(Header,styles))
