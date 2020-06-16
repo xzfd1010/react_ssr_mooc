@@ -17,14 +17,14 @@ class Translation extends Component {
   getList() {
     const {list} = this.props
     return list.map((item) => {
-      return (<div key={item.id}>{item.title}</div>)
+      return (<div key={item.id} className={styles.item}>{item.title}</div>)
     })
   }
 
   render() {
     return this.props.login ?
       (
-        <div className={styles.test}>{this.getList()}</div>
+        <div className={styles.container}>{this.getList()}</div>
       ) :
       (
         <Redirect to='/'/>
