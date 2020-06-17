@@ -1,7 +1,8 @@
 // node 结构下不支持import 语法，通过配置webpack得到支持
 
-import React, {Component} from "react";
+import React, { Component, Fragment } from "react";
 import {connect} from 'react-redux'
+import {Helmet} from "react-helmet";
 import {getHomeList} from "./store/actions";
 import styles from './style.css'
 import withStyle from "../../withStyle";
@@ -24,9 +25,15 @@ class Home extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        {this.getList()}
-      </div>
+        <Fragment>
+          <Helmet>
+            <title>这是Nick的SSR新闻页面 - 丰富多彩的资讯</title>
+            <meta name="description" content="这是Nick的SSR新闻页面 - 丰富多彩的资讯"/>
+          </Helmet>
+          <div className={styles.container}>
+            {this.getList()}
+          </div>
+        </Fragment>
     )
   }
 }

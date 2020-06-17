@@ -6,7 +6,6 @@ import {matchRoutes} from "react-router-config";
 import routes from "../Routes";
 import proxy from 'express-http-proxy'
 
-
 const app = express()
 // 设置静态文件的路径
 app.use(express.static('public'))
