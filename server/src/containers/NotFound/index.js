@@ -7,7 +7,6 @@ class NotFound extends Component {
   }
 
   render() {
-
     return <div>404, sorry, page not found</div>
   }
 }

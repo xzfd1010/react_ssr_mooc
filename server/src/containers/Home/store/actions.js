@@ -1,6 +1,5 @@
 import {CHANGE_LIST} from "./constants";
 
-
 const changeList = (list) => ({
   type: CHANGE_LIST,
   list

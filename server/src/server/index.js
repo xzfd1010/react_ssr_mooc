@@ -43,6 +43,7 @@ app.get('*', (req, res) => {
   })
 
   Promise.all(promises).then((values) => {
+    // console.log('values',values);
     const context = {
       css: []
     }

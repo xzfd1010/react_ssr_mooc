@@ -9,12 +9,14 @@ export const render = (req, store, routes, context) => {
     const content = renderToString((
         <Provider store={store}>
             <StaticRouter location={req.path} context={context}>
-                <div>
+                {/*<div>*/}
                     {renderRoutes(routes)}
-                </div>
+                {/*</div>*/}
             </StaticRouter>
         </Provider>
     ))
+
+    console.log('server routes',routes)
 
     const helmet = Helmet.renderStatic()
 
