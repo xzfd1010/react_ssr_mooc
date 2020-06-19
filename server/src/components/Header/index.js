@@ -21,7 +21,7 @@ class Header extends Component {
               <Link to='/translation' className={styles['list-item']}>翻译列表</Link>
               <div onClick={handleLogout} className={styles['list-item']}>退出</div>
             </Fragment>
-            : <div onClick={handleLogin} className={styles.listItem}>登录</div>
+            : <div onClick={handleLogin} className={styles['list-item']}>登录</div>
         }
       </div>
     )

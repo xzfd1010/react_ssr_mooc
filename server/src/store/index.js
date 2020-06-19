@@ -12,7 +12,7 @@ const reducer = combineReducers({
   translation: translationReducer
 })
 
-const getStore = (req) => {
+const getServerStore = (req) => {
   return createStore(reducer, applyMiddleware(thunk.withExtraArgument(createInstance(req))))
 }
 
@@ -23,4 +23,4 @@ const getClientStore = () => {
   return createStore(reducer, defaultState, applyMiddleware(thunk.withExtraArgument(clientAxios)))
 }
 
-export {getStore, getClientStore}
+export {getServerStore, getClientStore}

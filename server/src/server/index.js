@@ -1,10 +1,11 @@
 import express from 'express'
 import React from "react";
 import {render} from './utils'
-import {getStore} from "../store";
+import {getServerStore} from "../store";
 import {matchRoutes} from "react-router-config";
 import routes from "../Routes";
 import proxy from 'express-http-proxy'
+import config from '../config'
 
 const app = express()
 // 设置静态文件的路径
@@ -12,7 +13,7 @@ app.use(express.static('public'))
 
 const port = 3000
 
-app.use('/api', proxy('http://47.95.113.63', {
+app.use('/api', proxy(config.serverURL, {
   proxyReqPathResolver: function (req) {
     // req.url 就是 news.json?secret=PP87ANTIPIRATE 这段内容
     return '/ssr/api' + req.url
@@ -20,7 +21,7 @@ app.use('/api', proxy('http://47.95.113.63', {
 }));
 
 app.get('*', (req, res) => {
-  const store = getStore(req)
+  const store = getServerStore(req)
 
   // 即针对不同路径，向store中添加数据
   const matchedRoutes = matchRoutes(routes, req.path);
